@@ -1,6 +1,6 @@
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
-const {findAnimals, addAnimals, updateAnimal} = require('./queries.js')
+const {findAnimals, addAnimals, updateAnimal, eatAnimal } = require('./queries.js')
 
 const assert = require('assert');
 
@@ -43,6 +43,18 @@ const update = (cb, animal) =>{
     })
 }
 
+const eat = (cb, id) => {
+    MongoClient.connect(url, function(err, client) {
+        assert.equal(null, err);
+        const db = client.db(dbName);
+        eatAnimal(db, (results) => {
+            cb(results);
+            client.close();
+        }, id)
+    })
+}
+
 module.exports.query = query;
 module.exports.add = add;
 module.exports.update = update;
+module.exports.eat = eat;

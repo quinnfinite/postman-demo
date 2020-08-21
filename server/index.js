@@ -30,11 +30,16 @@ app.post('/animals', (req, res) => {
 
 app.patch('/animals', (req, res) => {
     const animal = req.body;
-    // console.log(animal)
-    // res.send('Updating!')
     db.update((data) => {
         res.send(data)
     }, animal)
+});
+
+app.delete('/eat/:id', (req, res) => {
+    const {id} = req.params;
+    db.eat((data) => {
+        res.send(data);
+    }, id)
 })
 
 app.listen(port, ()=>{
