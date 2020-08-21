@@ -66,6 +66,13 @@ Adds animals to the database.
 
 This endpoint allows adding multiple animals at a time and accepts an array of objects from the body of the request.
 
+#### PATCH - /animals
+Updates a single animal. Pass the information about the animal into the body of the request
+
+#### DELETE - /eat/:id
+Deletes a single animal. Include the id for the animal in the endpoints path.
+
+
 ## Author
 
 👤 **Quinn Royston**
