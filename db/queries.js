@@ -35,6 +35,18 @@ const updateAnimal = function (db, callback, animal) {
     })
 }
 
+const eatAnimal = function (db, callback, id) {
+    const collection = db.collection(process.env.DB_NAME);
+    collection.deleteOne({_id: ObjectID(_id)}, function (err, result) {
+        if (err) {
+            callback(result);
+        } else {
+            callback(result);
+        }
+    })
+}
+
 module.exports.findAnimals = findAnimals
 module.exports.addAnimals = addAnimals;
+module.exports.updateAnimal = updateAnimal;
 module.exports.updateAnimal = updateAnimal;
