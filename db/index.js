@@ -1,5 +1,6 @@
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
+const {findAnimals, addAnimals} = require('./queries.js')
 
 const assert = require('assert');
 
@@ -29,24 +30,6 @@ const add = (cb, animals) => {
             client.close();
         }, animals)
     });
-}
-
-
-
-const findAnimals = function (db, callback, options) {
-    const collection = db.collection('animals');
-    collection.find(options).toArray(function(err,docs) {
-        assert.equal(err, null);
-        callback(docs)
-    })
-}
-
-const addAnimals = function(db, callback, animals) {
-    const collection = db.collection('animals');
-    collection.insertMany(animals, function(err, result) {
-        assert.equal(err, null);
-        callback(result)
-    })
 }
 
 module.exports.query = query;

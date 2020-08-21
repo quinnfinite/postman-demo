@@ -26,7 +26,7 @@ app.post('/animals', (req, res) => {
     db.add((data)=>{
         res.send(data)
     }, animals)
-})
+});
 
 app.listen(port, ()=>{
     console.log(`Listening at http://localhost:${port}`)
