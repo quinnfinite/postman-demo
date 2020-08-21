@@ -19,6 +19,17 @@ const query = (cb, filter) => {
     });
 }
 
+const add = (cb, animals) => {
+    MongoClient.connect(url, function(err, client) {
+        assert.equal(null, err);
+        console.log("Connected successfully to server")
+        const db = client.db(dbName)
+        addAnimals(db, (results) =>{
+            cb(results)
+            client.close();
+        }, animals)
+    });
+}
 
 
 
@@ -30,4 +41,13 @@ const findAnimals = function (db, callback, options) {
     })
 }
 
+const addAnimals = function(db, callback, animals) {
+    const collection = db.collection('animals');
+    collection.insertMany(animals, function(err, result) {
+        assert.equal(err, null);
+        callback(result)
+    })
+}
+
 module.exports.query = query;
+module.exports.add = add;

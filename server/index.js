@@ -3,6 +3,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json())
+
 const port = 8008;
 
 const db = require('../db/index.js')
@@ -18,6 +20,13 @@ app.get('/animals', (req, res) => {
         res.send(animals)
     }, filter)
 });
+
+app.post('/animals', (req, res) => {
+    const animals = req.body;
+    db.add((data)=>{
+        res.send(data)
+    }, animals)
+})
 
 app.listen(port, ()=>{
     console.log(`Listening at http://localhost:${port}`)
