@@ -12,13 +12,14 @@ const query = (cb, filter) => {
         assert.equal(null, err);
         console.log("Connected successfully to server")
         const db = client.db(dbName)
-        
         findAnimals(db, (results) =>{
             cb(results)
             client.close();
         }, filter)
     });
 }
+
+
 
 
 const findAnimals = function (db, callback, options) {

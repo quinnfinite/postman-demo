@@ -13,10 +13,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/animals', (req, res) => {
+    var filter = req.query || {};
     db.query((animals) => {
         res.send(animals)
-    })
-})
+    }, filter)
+});
 
 app.listen(port, ()=>{
     console.log(`Listening at http://localhost:${port}`)
