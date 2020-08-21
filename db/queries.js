@@ -11,8 +11,12 @@ const findAnimals = function (db, callback, options) {
 const addAnimals = function(db, callback, animals) {
     const collection = db.collection('animals');
     collection.insertMany(animals, function(err, result) {
-        assert.equal(err, null);
-        callback(result)
+        //assert.equal(err, null);
+        if (err) {
+            callback('ERROR, could not add animal(s). Make sure you are sending an Array objects')
+        } else {
+            callback(result)
+        }
     })
 }
 
