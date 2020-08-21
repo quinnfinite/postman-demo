@@ -20,10 +20,35 @@
 
 ### 🏠 [Homepage](https://github.com/quinnfinite/postman-demo#readme)
 
+## Requirements
+  - Node
+  - MongoDB
+
+## Setup Process
+1. Install
+2. Create a .env file in the root directory with the following
+  - DB_URL - Set equal to the url for your MongoDB database - if using locally this will likely be mongodb://localhost:27017
+  - DB_NAME - Set equal to animals, or something similar
+  - PORT - Set to whatever port you'd like to use. Recommend 8000
+  - NUMBER_OF_ANIMALS - Set to however many animals you'd like to seed the database with
+3. Setup Database
+4. Seed Database
+5. Start Server and Enjoy :)
+
+
 ## Install
 
 ```sh
 npm install
+```
+
+## Setup Database
+```sh
+npm run createDB
+```
+## Seed Database
+```sh
+npm run seed
 ```
 
 ## Usage
