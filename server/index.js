@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json())
 
-const port = 8008;
+const port = process.env.PORT;
 
 const db = require('../db/index.js')
 
