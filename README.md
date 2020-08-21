@@ -31,6 +31,15 @@ npm install
 npm run start
 ```
 
+## Endpoints
+#### GET - /animals
+Retrieves all animals from the database. 
+
+#### POST - /animals
+Adds animals to the database. 
+
+This endpoint allows adding multiple animals at a time and accepts an array of objects from the body of the request.
+
 ## Author
 
 👤 **Quinn Royston**
