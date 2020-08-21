@@ -16,6 +16,7 @@
 </p>
 
 > Demo for Postman
+> For more information on API's, Postman, and HTTP Requests refer to my other walkthrough [Article] (https://medium.com/javascript-in-plain-english/going-postal-with-postman-http-requests-apis-in-plain-english-802b8a573335)
 
 ### 🏠 [Homepage](https://github.com/quinnfinite/postman-demo#readme)
 
