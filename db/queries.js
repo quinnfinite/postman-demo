@@ -1,5 +1,6 @@
-
+var ObjectID = require('mongodb').ObjectID;
 const assert = require('assert');
+
 const findAnimals = function (db, callback, options) {
     const collection = db.collection(process.env.DB_NAME);
     collection.find(options).toArray(function(err,docs) {
@@ -17,8 +18,23 @@ const addAnimals = function(db, callback, animals) {
         } else {
             callback(result)
         }
+    });
+}
+
+const updateAnimal = function (db, callback, animal) {
+    const collection = db.collection(process.env.DB_NAME);
+    const {_id} = animal;
+    delete animal._id;
+    collection.updateOne({_id: ObjectID(_id)}, {$set: animal}, function(err, result) {
+        if (err) {
+            console.log(err)
+            callback(err)
+        } else {
+            callback(result);
+        }
     })
 }
 
 module.exports.findAnimals = findAnimals
 module.exports.addAnimals = addAnimals;
+module.exports.updateAnimal = updateAnimal;

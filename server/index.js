@@ -28,6 +28,15 @@ app.post('/animals', (req, res) => {
     }, animals)
 });
 
+app.patch('/animals', (req, res) => {
+    const animal = req.body;
+    // console.log(animal)
+    // res.send('Updating!')
+    db.update((data) => {
+        res.send(data)
+    }, animal)
+})
+
 app.listen(port, ()=>{
     console.log(`Listening at http://localhost:${port}`)
 })
