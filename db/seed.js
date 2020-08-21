@@ -1,17 +1,22 @@
+var names = ['Roger', 'Timothy', 'Katheline', 'Ruby', 'Jade', 'Jackson', 'Phillip', 'Gus', 'Sara', 'Taylor'];
+var types = ['Cat', 'Dog', 'Eagle', 'Condor', 'Baboon', 'Penguin', 'Cheetah', 'Pigeon', 'Dolphin'];
+var noises = ['Woof!', 'Meow!', 'Scraw!', 'More Bacon Please!', 'My logic is undeniable', 'eEeeEEeeeEeee', 'bloop bloop bloop'];
 
-require('dotenv').config();
-const MongoClient = require('mongodb').MongoClient;
+var pickRandom = (arr) => {
+    var index = Math.floor(Math.random()*arr.length);
+    return arr[index]
+}
 
-const url = process.env.DB_URL
+var createAnimals = (numberOfAnimals) => {
+    var animals = [];
+    for (var count = 0; count < numberOfAnimals; count++) {
+        animals.push({
+            name: pickRandom(names),
+            type: pickRandom(types),
+            noise: pickRandom(noises),
+        })
+    }
+    return animals
+}
 
-const dbName = process.env.DB_NAME
-
-MongoClient.connect(url, function(err, client) {
-    if(err) throw err;
-    const db = client.db(dbName);
-    db.createCollection(dbName, function(err, res) {
-        if (err) throw err;
-        console.log("Collection created!")
-        client.close()
-    })
-});
+console.log(createAnimals(10))
