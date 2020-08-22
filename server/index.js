@@ -39,8 +39,7 @@ app.patch('/animals', (req, res) => {
 app.delete('/eat/:id', (req, res) => {
     const {id} = req.params;
     db.eat((data) => {
-        console.log(id)
-        res.send(data);
+        res.send(`${id} was eaten`);
     }, id)
 })
 
