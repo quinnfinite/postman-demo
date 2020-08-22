@@ -24,7 +24,7 @@ app.get('/animals', (req, res) => {
 app.post('/animals', (req, res) => {
     const animals = req.body;
     db.add((data)=>{
-        res.send(data)
+        res.send(`Added ${JSON.stringify(data.ops[0])} to database`)
     }, animals)
 });
 
@@ -39,6 +39,7 @@ app.patch('/animals', (req, res) => {
 app.delete('/eat/:id', (req, res) => {
     const {id} = req.params;
     db.eat((data) => {
+        console.log(id)
         res.send(data);
     }, id)
 })
