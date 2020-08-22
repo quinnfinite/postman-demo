@@ -24,7 +24,7 @@ app.get('/animals', (req, res) => {
 app.post('/animals', (req, res) => {
     const animals = req.body;
     db.add((data)=>{
-        res.send(`Added ${JSON.stringify(data.ops[0])} to database`)
+        res.send(data)
     }, animals)
 });
 
