@@ -30,8 +30,9 @@ app.post('/animals', (req, res) => {
 
 app.patch('/animals', (req, res) => {
     const animal = req.body;
+    const { _id } = animal
     db.update((data) => {
-        res.send(data)
+        res.send(`Updated: ${_id} to: ${JSON.stringify(animal)}`)
     }, animal)
 });
 
