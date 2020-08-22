@@ -61,6 +61,8 @@ npm run start
 #### GET - /animals
 Retrieves all animals from the database. 
 
+Accepts parameters to filter animals.
+
 #### POST - /animals
 Adds animals to the database. 
 
