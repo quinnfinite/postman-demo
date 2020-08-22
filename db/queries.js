@@ -14,7 +14,7 @@ const addAnimals = function(db, callback, animals) {
     collection.insertMany(animals, function(err, result) {
         //assert.equal(err, null);
         if (err) {
-            callback('ERROR, could not add animal(s). Make sure you are sending an Array objects')
+            callback('ERROR, could not add animal(s). Make sure you are sending an Array of objects')
         } else {
             callback(result)
         }
